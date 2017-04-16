@@ -1,0 +1,27 @@
+<head>
+    <!-- Basic Page Needs
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="utf-8">
+    {% if page.title %}
+    <title>{{ page.title }}</title>
+    {% else %}
+    <title>{{ site.title }}</title>
+    {% endif %}
+    <meta name="description" content="{{ site.description }}">
+    <meta name="author" content="{{ site.author }}">
+    <!-- Mobile Specific Metas
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/normalize.css">
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/skeleton.css">
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/navbar.css">
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/peek.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <script defer src="{{site.baseurl}}/assets/js/peek.js"></script>
+    <!-- Favicon
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="icon" type="image/png" href="{{site.baseurl}}/assets/favicon.ico">
+</head>

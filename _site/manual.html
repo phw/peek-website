@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Basic Page Needs
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="utf-8">
+    
+    <title>Peek &#58; Documentation</title>
+    
+    <meta name="description" content="Simple animated GIF screen recorder with an easy to use interface.">
+    <meta name="author" content="Philipp Wolfer">
+    <!-- Mobile Specific Metas
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="/peek-website/assets/css/normalize.css">
+    <link rel="stylesheet" href="/peek-website/assets/css/skeleton.css">
+    <link rel="stylesheet" href="/peek-website/assets/css/navbar.css">
+    <link rel="stylesheet" href="/peek-website/assets/css/peek.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <script defer src="/peek-website/assets/js/peek.js"></script>
+    <!-- Favicon
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="icon" type="image/png" href="/peek-website/assets/favicon.ico">
+</head>
+
+
+<body>
+  <main class="main" aria-label="Content">
+  	<div class="container">
+        
+<nav class="topnav">
+
+  <div class="row">
+    <div id="nav-left" class="two columns">
+      <a href="/peek-website/" class="site-logo">
+        <img src="/peek-website/assets/images/logo.png">
+      </a>
+    </div>
+    <div id="nav-right" class="ten columns">
+      <a href="/peek-website/contribute">Contribute</a></li>
+      <a href="/peek-website/manual/">Documentation</a>
+
+    </div>
+  </div>
+
+
+
+</nav>
+
+
+    
+    <div id="black-area">
+        <a class="scroll" href="/peek-website/manual/#black-area"><h5>The recording area is all black, how can I record anything?</h5></a>
+        <p>
+            <p>If the recording area is not showing the content behind Peek you have probably compositing disabled in your window manager. Peek requires compositing in order to make the Peek window transparent. Please consult your window manager’s documentation how to enable compositing.</p>
+
+        </p>
+    </div>
+
+    <div id="gif-flicker">
+        <a class="scroll" href="/peek-website/manual/#gif-flicker"><h5>My recorded GIFs flicker, what is wrong?</h5></a>
+        <p>
+            <p>Some users have experienced recorded windows flicker or other strange visual artifacts only visible in the recorded GIF. This is most likely a video driver issue. If you are using Intel video drivers switching between the SNA and UXA acceleration methods can help. For NVIDIA drivers changing the “Allow Flipping” setting in the NVIDIA control panel <a href="https://github.com/phw/peek/issues/86">was reported to help</a>.</p>
+
+        </p>
+    </div>
+
+    <div id="gif-is-bad">
+        <a class="scroll" href="/peek-website/manual/#gif-is-bad"><h5>If GIF is so bad why use it at all?</h5></a>
+        <p>
+            <p>While GIF is a very old format, it has seen some rise in usage again in recent years. One reason is its easy usage in the Web. GIF files are supported nearly everywhere, which means you can add animations easily to everywhere where you can upload images. With real video files you are still more limited. Typical use cases for Peek are recording small user interactions for showing UI features of an app you developed, for making short tutorials or for reporting bugs.</p>
+
+        </p>
+    </div>
+
+    <div id="huge-file">
+        <a class="scroll" href="/peek-website/manual/#huge-file"><h5>Why are the GIF files so big?</h5></a>
+        <p>
+            <p>Peek is using ImageMagick to optimize the GIF files and reduce the file size. As was shown in <a href="https://github.com/phw/peek/issues/3#issuecomment-243872774">issue #3</a> the resulting files are already small and compare well to other GIF recording software. In the end the GIF format is not well suited for doing large animations with a lot of changes and colors. For best results:</p>
+<ul>
+<li><span>Use a lower frame rate. 10fps is the default and works well, but in many cases you can even get good results with lower framerates.</span></li>
+    <li><span>Avoid too much change. If there is heavy animation the frames will differ a lot.</span></li>
+    <li><span>Record small areas or use the downsample option to scale the image. The GIF file format is not well suited for high resolution or full screen recording.</span></li>
+    <li><span>Avoid too many colors, since GIF is limited to a 256 color palette. This one is not so much about file size but more about visual quality.</span></li>
+    <li><span>If the above suggestions are not suitable for your use case, consider using WebM or MP4 format (see below).</span></li>
+</ul>
+
+        </p>
+    </div>
+
+    <div id="mouse">
+        <a class="scroll" href="/peek-website/manual/#mouse"><h5>How can I capture mouse clicks and/or key strokes?</h5></a>
+        <p>
+            <p>Peek does not support this natively. But you could install an external tool like <a href="https://github.com/critiqjo/key-mon">key-mon</a> which is usually included in most distributions, so you can easily install with your package manager. Then start key-mon with <code>key-mon --visible_click</code>. The <code>--visible_click</code> option is for drawing small circles around mouse clicks.</p>
+
+        </p>
+    </div>
+
+    <div id="ui-elements">
+        <a class="scroll" href="/peek-website/manual/#ui-elements"><h5>Why can't I interact with the UI elements inside the recording area?</h5></a>
+        <p>
+            <p>You absolutely should be able to click the UI elements inside the area you are recording. However this does not work as intended on some window managers, most notably i3. If this does not work for you on any other window manager please open an <a href="https://github.com/phw/peek/issues">issue on Github</a>.</p>
+
+        </p>
+    </div>
+
+    <div id="native-wayland">
+        <a class="scroll" href="/peek-website/manual/#native-wayland"><h5>Why no native Wayland support?</h5></a>
+        <p>
+            <p>
+Wayland has two restrictions that make it hard for Peek to support Wayland natively:
+</p>
+<ul>
+    <li>The Wayland protocol does not define a standard way for applications to obtain a screenshot. That is intentional, as taking an arbitrary screenshot essentially means any application can read the contents of the whole display, and Wayland strives to offer improved security by isolating applications. It is up to the compositors to provide screenshot capability, and most do. GNOME Shell also provides a public interface for applications to use which Peek does support.</li>
+    <li>The Wayland protocol does not provide absolute screen coordinates to the applications. There is not even a coordinate system for windows at all. Again this is intentional, as they are not needed in many cases and you do not need to follow restrictions imposed by the traditional assumption that the screen is a rectangular area (e.g. you can have circular screens or lay out windows in 3D space).</li>
+</ul>
+<p>Unfortunately the whole concept of the Peek UI is that the window position itself is used to obtain the recording coordinates. That means for now there cannot be any fully native Wayland support without special support for this use case by the compositor.
+<br /><br />
+It is however possible to use Peek in a GNOME Shell Wayland session using XWayland by launching Peek with the X11 backend:
+</p>
+<pre>
+GDK_BACKEND=x11 peek
+</pre>
+<p>
+Support for compositors other than GNOME Shell can be added if a suitable screencasting interface is provided.
+</p>
+
+        </p>
+    </div>
+
+    <div id="web-format">
+        <a class="scroll" href="/peek-website/manual/#web-format"><h5>What about WebM or MP4? Those are well supported on the web.</h5></a>
+        <p>
+            <p>Peek allows you to record in both WebM and MP4 format, just choose your preferred output format in the preferences. Both are well supported by modern browsers, even though they are still not as universally supported by tools and online services as GIFs.</p>
+
+        </p>
+    </div>
+
+
+    </div>
+  </main>
+  
+
+<footer>
+
+<div class="footer-content">
+  <!--
+  <div class="footer-website">
+    <ul>
+      <li><a href="https://hosted.weblate.org/projects/peek/translations/"><i class="fa fa-globe" aria-hidden="true"></i> &nbsp; Translations</a></li>
+      <li><a href="https://github.com/phw/peek"><i class="fa fa-code" aria-hidden="true"></i> &nbsp; Source code</a></li>
+    </ul>
+  </div>
+  -->
+  <div class="footer-copyrights">
+    Designed and coded with love by Bilal Elmoussaoui.
+  </div>
+
+</div>
+</footer>
+
+
+</body>
+</html>

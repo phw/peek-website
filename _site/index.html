@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Basic Page Needs
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="utf-8">
+    
+    <title>Peek &colon; an animated GIF recorder</title>
+    
+    <meta name="description" content="Simple animated GIF screen recorder with an easy to use interface.">
+    <meta name="author" content="Philipp Wolfer">
+    <!-- Mobile Specific Metas
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="/peek-website/assets/css/normalize.css">
+    <link rel="stylesheet" href="/peek-website/assets/css/skeleton.css">
+    <link rel="stylesheet" href="/peek-website/assets/css/navbar.css">
+    <link rel="stylesheet" href="/peek-website/assets/css/peek.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <script defer src="/peek-website/assets/js/peek.js"></script>
+    <!-- Favicon
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="icon" type="image/png" href="/peek-website/assets/favicon.ico">
+</head>
+
+
+<body>
+  <main class="main" aria-label="Content">
+  	<div class="container">
+        
+<nav class="topnav">
+
+  <div class="row">
+    <div id="nav-left" class="two columns">
+      <a href="/peek-website/" class="site-logo">
+        <img src="/peek-website/assets/images/logo.png">
+      </a>
+    </div>
+    <div id="nav-right" class="ten columns">
+      <a href="/peek-website/contribute">Contribute</a></li>
+      <a href="/peek-website/manual/">Documentation</a>
+
+    </div>
+  </div>
+
+
+
+</nav>
+
+
+    <div class="row">
+  <div class="five columns">
+
+      <div id="packages">
+      <select>
+      
+            <option value="archlinux">Arch Linux</option>
+      
+            <option value="debian">Debian</option>
+      
+            <option value="fedora">Fedora</option>
+      
+            <option value="flatpak">Flatpak</option>
+      
+            <option value="manual">Manual installation</option>
+      
+            <option value="offical">Official packages</option>
+      
+            <option value="other">Other distributions</option>
+      
+            <option value="snappy">Snappy</option>
+      
+            <option value="ubuntu">Ubuntu</option>
+      
+      </select>
+
+      <ul>
+      
+          <div class="package-content" id="archlinux">
+              <p>For Arch Linux
+<a href="https://aur.archlinux.org/packages/peek/">peek</a> is available in the AUR. You
+can also use <a href="https://aur.archlinux.org/packages/peek-git/">peek-git</a> to install
+the latest development version.</p>
+
+
+          </div>
+      
+          <div class="package-content" id="debian">
+              <p>There are no official Debian packages, yet, but you can easily create your own
+.deb package for Peek. First install the build dependencies:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt install cmake valac libgtk-3-dev libkeybinder-3.0-dev libxml2-utils gettext
+</code></pre>
+</div>
+<p>Then build Peek and package it:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/phw/peek.git
+mkdir peek/build
+cd peek/build
+cmake -DCMAKE_INSTALL_PREFIX=/usr -DGSETTINGS_COMPILE=OFF ..
+make package
+</code></pre>
+</div>
+<p>This will create the package <code class="highlighter-rouge">peek-1.0.0-Linux.deb</code>. You can install it with
+dpkg:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo dpkg -i peek-1.0.0-Linux.deb
+</code></pre>
+</div>
+
+          </div>
+      
+          <div class="package-content" id="fedora">
+              <p>Fedora 25 users can use this repository:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo dnf config-manager --add-repo http://download.opensuse.org/repositories/home:/Bajoja/Fedora_25/home:Bajoja.repo
+sudo dnf install peek -y
+</code></pre>
+</div>
+<p>To install the required ffmpeg package you can use the RPM Fusion free
+repository, see the
+<a href="https://rpmfusion.org/Configuration">setup instructions for RPM fusion</a>.
+Once the repository is enabled install ffmpeg with:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo dnf install ffmpeg
+</code></pre>
+</div>
+
+          </div>
+      
+          <div class="package-content" id="flatpak">
+              <p>Peek can be installed on all distributions supporting <a href="http://flatpak.org/">Flatpak</a>.
+To install, either download
+<a href="http://flatpak.uploadedlobster.com/peek-stable.flatpakref">peek-stable.flatpakref</a>
+and open it with GNOME Software or install via command line:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>flatpak install --user http://flatpak.uploadedlobster.com/peek-stable.flatpakref
+</code></pre>
+</div>
+<p>For full functionality you should also install
+<a href="https://github.com/flatpak/xdg-desktop-portal-gtk">xdg-desktop-portal-gtk</a>.
+Once installed you can run Peek via its application icon in your desktop
+environment or from command line:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>flatpak run com.uploadedlobster.peek
+</code></pre>
+</div>
+<p>To update to the latest version run:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>flatpak update --user com.uploadedlobster.peek
+</code></pre>
+</div>
+<p>To test the latest development version you can install
+<a href="http://flatpak.uploadedlobster.com/peek-master.flatpakref">peek-master.flatpakref</a></p>
+
+          </div>
+      
+          <div class="package-content" id="manual">
+              <p>You can build and install Peek using CMake:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/phw/peek.git
+mkdir peek/build
+cd peek/build
+cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+make
+
+# Run directly from source
+./peek
+
+# Install system wide
+sudo make install
+</code></pre>
+</div>
+<p>You can uninstall Peek again by running <code class="highlighter-rouge">sudo make uninstall</code> from within the
+build directory.</p>
+
+          </div>
+      
+          <div class="package-content" id="offical">
+              <p>Peek is available in official package repositories for the following
+distributions:</p>
+
+<ul>
+  <li><a href="https://packages.gentoo.org/packages/media-video/peek">Gentoo</a></li>
+  <li><a href="https://software.opensuse.org/package/peek">OpenSUSE Tumbleweed</a></li>
+  <li><a href="https://www.parabola.nu/packages/?q=peek">Parabola</a></li>
+</ul>
+
+          </div>
+      
+          <div class="package-content" id="other">
+              <p>See the <a href="https://repology.org/metapackage/peek/packages">Repology package list</a>
+for a list of Peek packages for various distributions.</p>
+
+          </div>
+      
+          <div class="package-content" id="snappy">
+              <p>Peek can also be installed on all distributions supporting <a href="https://snapcraft.io/docs/core/install">Snappy</a>.
+Currently only the development version is available in the Snappy format:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo snap install peek --edge --devmode
+</code></pre>
+</div>
+
+          </div>
+      
+          <div class="package-content" id="ubuntu">
+              <p>You can install the latest versions of Peek from the
+<a href="https://code.launchpad.net/~peek-developers/+archive/ubuntu/stable">Ubuntu PPA</a>.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo add-apt-repository ppa:peek-developers/stable
+sudo apt update
+sudo apt install peek
+</code></pre>
+</div>
+<p>If you want to use the latest development version there is also a
+<a href="https://code.launchpad.net/~peek-developers/+archive/ubuntu/daily">PPA with daily builds</a>
+available. Use the repository <code class="highlighter-rouge">ppa:peek-developers/daily</code> in the above commands.</p>
+
+          </div>
+      
+      </ul>
+      </div>
+  </div>
+  <div id="header-screenshot" class="seven columns">
+      <img src="/peek-website/assets/images/screenshots/main.png" alt="Peek"/>
+   </div>
+</div>
+
+<div class="text-center"><h3 class="section-heading">Features</h3></div>
+<div id="features">
+        
+            
+            
+                <div class="row">
+                  
+                    <div class="seven columns">
+                      <img src="/peek-website/assets/images/screenshots/main.png" alt="Screenshot" />
+                    </div>
+                    <div class="five columns">
+                      <h5 class="value-multiplier">Fast...</h5>
+                      <p><p>New features</p>
+</p>
+                    </div>
+                  
+                </div>
+            
+            
+                <div class="row">
+                  
+                    <div class="five columns">
+                      <h5 class="value-multiplier">Fast...</h5>
+                      <p><p>New features</p>
+</p>
+                    </div>
+
+                    <div class="seven columns">
+                      <img src="/peek-website/assets/images/screenshots/main.png" alt="Screenshot" />
+                    </div>
+                  
+                </div>
+            
+            
+                <div class="row">
+                  
+                    <div class="seven columns">
+                      <img src="/peek-website/assets/images/screenshots/main.png" alt="Screenshot" />
+                    </div>
+                    <div class="five columns">
+                      <h5 class="value-multiplier">Fast...</h5>
+                      <p><p>New features</p>
+</p>
+                    </div>
+                  
+                </div>
+            
+        
+</div>
+
+    </div>
+  </main>
+  
+
+<footer>
+
+<div class="footer-content">
+  <!--
+  <div class="footer-website">
+    <ul>
+      <li><a href="https://hosted.weblate.org/projects/peek/translations/"><i class="fa fa-globe" aria-hidden="true"></i> &nbsp; Translations</a></li>
+      <li><a href="https://github.com/phw/peek"><i class="fa fa-code" aria-hidden="true"></i> &nbsp; Source code</a></li>
+    </ul>
+  </div>
+  -->
+  <div class="footer-copyrights">
+    Designed and coded with love by Bilal Elmoussaoui.
+  </div>
+
+</div>
+</footer>
+
+
+</body>
+</html>

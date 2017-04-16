@@ -1,0 +1,19 @@
+baseurl: "/peek-website"
+
+title: Peek &colon; an animated GIF recorder
+author: Philipp Wolfer
+
+description: Simple animated GIF screen recorder with an easy to use interface.
+
+sass:
+  sass_dir: assets/sass
+  style: :compressed
+
+exclude: [README.md]
+collections:
+    faq:
+        output: false
+    packages:
+        output: false
+    features:
+        output: false

@@ -1,0 +1,56 @@
+---
+layout: default
+---
+
+<div class="row">
+  <div class="five columns">
+
+      <div id="packages">
+      <select>
+      {% for package in site.packages %}
+            <option value="{{package._id}}">{{package.package}}</option>
+      {% endfor %}
+      </select>
+
+      <ul>
+      {% for package in site.packages %}
+          <div class="package-content" id="{{package._id}}">
+              {{package.content}}
+          </div>
+      {%endfor%}
+      </ul>
+      </div>
+  </div>
+  <div id="header-screenshot" class="seven columns">
+      <img src="{{site.baseurl}}/assets/images/screenshots/main.png" alt="Peek"/>
+   </div>
+</div>
+
+<div class="text-center"><h3 class="section-heading">Features</h3></div>
+<div id="features">
+        {% if site.features != empty %}
+            {% for feature in site.features %}
+            {% assign loopindex = forloop.index | modulo: 2 %}
+                <div class="row">
+                  {% if loopindex == 1 %}
+                    <div class="seven columns">
+                      <img src="{{site.baseurl}}/assets/images/screenshots/{{feature.screenshot}}" alt="Screenshot" />
+                    </div>
+                    <div class="five columns">
+                      <h5 class="value-multiplier">{{ feature.title }}</h5>
+                      <p>{{ feature.content }}</p>
+                    </div>
+                  {% else %}
+                    <div class="five columns">
+                      <h5 class="value-multiplier">{{ feature.title }}</h5>
+                      <p>{{ feature.content }}</p>
+                    </div>
+
+                    <div class="seven columns">
+                      <img src="{{site.baseurl}}/assets/images/screenshots/{{feature.screenshot}}" alt="Screenshot" />
+                    </div>
+                  {%endif%}
+                </div>
+            {% endfor %}
+        {% endif %}
+</div>
