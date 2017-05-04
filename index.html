@@ -2,30 +2,10 @@
 layout: default
 ---
 
-<div class="row">
-  <div class="five columns">
 
-      <div id="packages">
-      <select>
-      {% for package in site.packages %}
-            <option value="{{package._id}}">{{package.package}}</option>
-      {% endfor %}
-      </select>
-
-      <ul>
-      {% for package in site.packages %}
-          <div class="package-content" id="{{package._id}}">
-              {{package.content}}
-          </div>
-      {%endfor%}
-      </ul>
-      </div>
-  </div>
-  <div id="header-screenshot" class="seven columns">
-      <img src="{{site.baseurl}}/assets/images/screenshots/main.png" alt="Peek"/>
-   </div>
-</div>
-
+<!--
+  Start Section : Features
+-->
 <div class="text-center"><h3 class="section-heading">Features</h3></div>
 <div id="features">
         {% if site.features != empty %}
@@ -54,3 +34,31 @@ layout: default
             {% endfor %}
         {% endif %}
 </div>
+<!--
+    End Section : Features
+-->
+
+
+<!--
+    Start Section : Packages
+-->
+<div class="text-center"><h3 class="section-heading">Installation</h3></div>
+
+<div class="row" id="packages">
+      <select>
+      {% for package in site.packages %}
+            <option value="{{package._id}}">{{package.package}}</option>
+      {% endfor %}
+      </select>
+
+      <ul>
+      {% for package in site.packages %}
+          <div class="package-content" id="{{package._id}}">
+              {{package.content}}
+          </div>
+      {%endfor%}
+      </ul>
+</div>
+<!--
+  End Section : Packages
+-->
