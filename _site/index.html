@@ -137,29 +137,79 @@ friendly video formats widely supported.</p>
 <div class="row" id="packages">
       <select>
       
+            <option value="flatpak">Flatpak</option>
+      
+            <option value="snappy">Snappy</option>
+      
+            <option value="offical">Official packages</option>
+      
             <option value="archlinux">Arch Linux</option>
       
             <option value="debian">Debian</option>
       
             <option value="fedora">Fedora</option>
       
-            <option value="flatpak">Flatpak</option>
-      
-            <option value="manual">Manual installation</option>
-      
-            <option value="offical">Official packages</option>
-      
-            <option value="other">Other distributions</option>
-      
-            <option value="snappy">Snappy</option>
-      
             <option value="solus">Solus</option>
       
             <option value="ubuntu">Ubuntu</option>
       
+            <option value="other">Other distributions</option>
+      
+            <option value="manual">Manual installation</option>
+      
       </select>
 
       <ul>
+      
+          <div class="package-content" id="flatpak">
+              <p>Peek can be installed on all distributions supporting <a href="http://flatpak.org/">Flatpak</a>.
+To install, either download
+<a href="http://flatpak.uploadedlobster.com/peek-stable.flatpakref">peek-stable.flatpakref</a>
+and open it with GNOME Software or install via command line:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>flatpak install --user http://flatpak.uploadedlobster.com/peek-stable.flatpakref
+</code></pre>
+</div>
+
+<p>For full functionality you should also install
+<a href="https://github.com/flatpak/xdg-desktop-portal-gtk">xdg-desktop-portal-gtk</a>.
+Once installed you can run Peek via its application icon in your desktop
+environment or from command line:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>flatpak run com.uploadedlobster.peek
+</code></pre>
+</div>
+
+          </div>
+      
+          <div class="package-content" id="snappy">
+              <p>Peek can also be installed on all distributions supporting <a href="https://snapcraft.io/docs/core/install">Snappy</a>.
+Currently only the development version is available in the Snappy format:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo snap install peek --edge --devmode
+</code></pre>
+</div>
+
+<p>Once installed you can run Peek via its application icon in your desktop
+environment or from command line:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>snap run peek
+</code></pre>
+</div>
+
+          </div>
+      
+          <div class="package-content" id="offical">
+              <p>Peek is available in official package repositories for the following
+distributions:</p>
+
+<ul>
+  <li><a href="https://packages.gentoo.org/packages/media-video/peek">Gentoo</a></li>
+  <li><a href="https://software.opensuse.org/package/peek">OpenSUSE Tumbleweed</a></li>
+  <li><a href="https://www.parabola.nu/packages/?q=peek">Parabola</a></li>
+</ul>
+
+          </div>
       
           <div class="package-content" id="archlinux">
               <p>For Arch Linux
@@ -222,99 +272,6 @@ package also available from RPM Fusion free:</p>
 
           </div>
       
-          <div class="package-content" id="flatpak">
-              <p>Peek can be installed on all distributions supporting <a href="http://flatpak.org/">Flatpak</a>.
-To install, either download
-<a href="http://flatpak.uploadedlobster.com/peek-stable.flatpakref">peek-stable.flatpakref</a>
-and open it with GNOME Software or install via command line:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>flatpak install --user http://flatpak.uploadedlobster.com/peek-stable.flatpakref
-</code></pre>
-</div>
-
-<p>For full functionality you should also install
-<a href="https://github.com/flatpak/xdg-desktop-portal-gtk">xdg-desktop-portal-gtk</a>.
-Once installed you can run Peek via its application icon in your desktop
-environment or from command line:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>flatpak run com.uploadedlobster.peek
-</code></pre>
-</div>
-
-<p>To update to the latest version run:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>flatpak update --user com.uploadedlobster.peek
-</code></pre>
-</div>
-
-<p>To test the latest development version you can install
-<a href="http://flatpak.uploadedlobster.com/peek-master.flatpakref">peek-master.flatpakref</a></p>
-
-          </div>
-      
-          <div class="package-content" id="manual">
-              <p>You can build and install Peek using CMake:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/phw/peek.git
-mkdir peek/build
-cd peek/build
-cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-make
-
-# Run directly from source
-./peek
-
-# Install system wide
-sudo make install
-</code></pre>
-</div>
-
-<p>You can uninstall Peek again by running <code class="highlighter-rouge">sudo make uninstall</code> from within the
-build directory.</p>
-
-          </div>
-      
-          <div class="package-content" id="offical">
-              <p>Peek is available in official package repositories for the following
-distributions:</p>
-
-<ul>
-  <li><a href="https://packages.gentoo.org/packages/media-video/peek">Gentoo</a></li>
-  <li><a href="https://software.opensuse.org/package/peek">OpenSUSE Tumbleweed</a></li>
-  <li><a href="https://www.parabola.nu/packages/?q=peek">Parabola</a></li>
-</ul>
-
-          </div>
-      
-          <div class="package-content" id="other">
-              <p>See the <a href="https://repology.org/metapackage/peek/packages">Repology package list</a>
-for a list of Peek packages for various distributions.</p>
-
-          </div>
-      
-          <div class="package-content" id="snappy">
-              <p>Peek can also be installed on all distributions supporting <a href="https://snapcraft.io/docs/core/install">Snappy</a>.
-Currently only the development version is available in the Snappy format:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo snap install peek --edge --devmode
-</code></pre>
-</div>
-
-<p>Once installed you can run Peek via its application icon in your desktop
-environment or from command line:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>snap run peek
-</code></pre>
-</div>
-
-<p>To update to the latest version run:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo snap refresh peek --devmode
-</code></pre>
-</div>
-
-          </div>
-      
           <div class="package-content" id="solus">
               <p>For Solus users just run:</p>
 
@@ -337,6 +294,34 @@ sudo apt install peek
 <p>If you want to use the latest development version there is also a
 <a href="https://code.launchpad.net/~peek-developers/+archive/ubuntu/daily">PPA with daily builds</a>
 available. Use the repository <code class="highlighter-rouge">ppa:peek-developers/daily</code> in the above commands.</p>
+
+          </div>
+      
+          <div class="package-content" id="other">
+              <p>See the <a href="https://repology.org/metapackage/peek/packages">Repology package list</a>
+for a list of Peek packages for various distributions.</p>
+
+          </div>
+      
+          <div class="package-content" id="manual">
+              <p>You can build and install Peek using CMake:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/phw/peek.git
+mkdir peek/build
+cd peek/build
+cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+make
+
+# Run directly from source
+./peek
+
+# Install system wide
+sudo make install
+</code></pre>
+</div>
+
+<p>You can uninstall Peek again by running <code class="highlighter-rouge">sudo make uninstall</code> from within the
+build directory.</p>
 
           </div>
       

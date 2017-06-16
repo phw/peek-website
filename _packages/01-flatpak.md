@@ -16,10 +16,3 @@ Once installed you can run Peek via its application icon in your desktop
 environment or from command line:
 
     flatpak run com.uploadedlobster.peek
-
-To update to the latest version run:
-
-    flatpak update --user com.uploadedlobster.peek
-
-To test the latest development version you can install
-[peek-master.flatpakref](http://flatpak.uploadedlobster.com/peek-master.flatpakref)
