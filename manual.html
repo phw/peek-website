@@ -1,0 +1,13 @@
+---
+layout: default
+title: Peek &#58; Documentation
+---
+
+{% for faq in site.faq %}
+    <div id="{{faq._id}}">
+        <a class="scroll" href="{{site.baseurl}}/manual/#{{faq._id}}"><h5>{{faq.title}}</h5></a>
+        <p>
+            {{faq.content}}
+        </p>
+    </div>
+{% endfor %}
