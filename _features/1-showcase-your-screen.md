@@ -1,6 +1,6 @@
 ---
 title: Showcase your screen
-screenshot: main.png
+screenshot: peek-main-window.png
 ---
 
 Peek makes it easy to create short screencasts of an area of your screen. It was
