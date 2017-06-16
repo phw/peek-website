@@ -133,6 +133,8 @@
       
             <option value="snappy">Snappy</option>
       
+            <option value="solus">Solus</option>
+      
             <option value="ubuntu">Ubuntu</option>
       
       </select>
@@ -145,16 +147,18 @@
 can also use <a href="https://aur.archlinux.org/packages/peek-git/">peek-git</a> to install
 the latest development version.</p>
 
-
           </div>
       
           <div class="package-content" id="debian">
               <p>There are no official Debian packages, yet, but you can easily create your own
 .deb package for Peek. First install the build dependencies:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt install cmake valac libgtk-3-dev libkeybinder-3.0-dev libxml2-utils gettext
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt install cmake valac libgtk-3-dev libkeybinder-3.0-dev libxml2-utils gettext txt2man
 </code></pre>
 </div>
+
 <p>Then build Peek and package it:</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/phw/peek.git
 mkdir peek/build
 cd peek/build
@@ -162,9 +166,11 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr -DGSETTINGS_COMPILE=OFF ..
 make package
 </code></pre>
 </div>
-<p>This will create the package <code class="highlighter-rouge">peek-1.0.0-Linux.deb</code>. You can install it with
+
+<p>This will create the package <code class="highlighter-rouge">peek-1.0.3-Linux.deb</code>. You can install it with
 dpkg:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo dpkg -i peek-1.0.0-Linux.deb
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo dpkg -i peek-1.0.3-Linux.deb
 </code></pre>
 </div>
 
@@ -172,15 +178,25 @@ dpkg:</p>
       
           <div class="package-content" id="fedora">
               <p>Fedora 25 users can use this repository:</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>sudo dnf config-manager --add-repo http://download.opensuse.org/repositories/home:/Bajoja/Fedora_25/home:Bajoja.repo
-sudo dnf install peek -y
+sudo dnf install peek
 </code></pre>
 </div>
-<p>To install the required ffmpeg package you can use the RPM Fusion free
+
+<p>To install the required <code class="highlighter-rouge">ffmpeg</code> package you can use the RPM Fusion free
 repository, see the
-<a href="https://rpmfusion.org/Configuration">setup instructions for RPM fusion</a>.
-Once the repository is enabled install ffmpeg with:</p>
+<a href="https://rpmfusion.org/Configuration">setup instructions for RPM Fusion</a>.
+Once the repository is enabled install FFmpeg with:</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>sudo dnf install ffmpeg
+</code></pre>
+</div>
+
+<p>For MP4 recording on GNOME Shell you also need the <code class="highlighter-rouge">gstreamer1-plugins-ugly</code>
+package also available from RPM Fusion free:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo dnf install gstreamer1-plugins-ugly
 </code></pre>
 </div>
 
@@ -191,20 +207,26 @@ Once the repository is enabled install ffmpeg with:</p>
 To install, either download
 <a href="http://flatpak.uploadedlobster.com/peek-stable.flatpakref">peek-stable.flatpakref</a>
 and open it with GNOME Software or install via command line:</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>flatpak install --user http://flatpak.uploadedlobster.com/peek-stable.flatpakref
 </code></pre>
 </div>
+
 <p>For full functionality you should also install
 <a href="https://github.com/flatpak/xdg-desktop-portal-gtk">xdg-desktop-portal-gtk</a>.
 Once installed you can run Peek via its application icon in your desktop
 environment or from command line:</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>flatpak run com.uploadedlobster.peek
 </code></pre>
 </div>
+
 <p>To update to the latest version run:</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>flatpak update --user com.uploadedlobster.peek
 </code></pre>
 </div>
+
 <p>To test the latest development version you can install
 <a href="http://flatpak.uploadedlobster.com/peek-master.flatpakref">peek-master.flatpakref</a></p>
 
@@ -212,6 +234,7 @@ environment or from command line:</p>
       
           <div class="package-content" id="manual">
               <p>You can build and install Peek using CMake:</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/phw/peek.git
 mkdir peek/build
 cd peek/build
@@ -225,6 +248,7 @@ make
 sudo make install
 </code></pre>
 </div>
+
 <p>You can uninstall Peek again by running <code class="highlighter-rouge">sudo make uninstall</code> from within the
 build directory.</p>
 
@@ -251,7 +275,30 @@ for a list of Peek packages for various distributions.</p>
           <div class="package-content" id="snappy">
               <p>Peek can also be installed on all distributions supporting <a href="https://snapcraft.io/docs/core/install">Snappy</a>.
 Currently only the development version is available in the Snappy format:</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>sudo snap install peek --edge --devmode
+</code></pre>
+</div>
+
+<p>Once installed you can run Peek via its application icon in your desktop
+environment or from command line:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>snap run peek
+</code></pre>
+</div>
+
+<p>To update to the latest version run:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo snap refresh peek --devmode
+</code></pre>
+</div>
+
+          </div>
+      
+          <div class="package-content" id="solus">
+              <p>For Solus users just run:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo eopkg install peek
 </code></pre>
 </div>
 
@@ -260,11 +307,13 @@ Currently only the development version is available in the Snappy format:</p>
           <div class="package-content" id="ubuntu">
               <p>You can install the latest versions of Peek from the
 <a href="https://code.launchpad.net/~peek-developers/+archive/ubuntu/stable">Ubuntu PPA</a>.</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>sudo add-apt-repository ppa:peek-developers/stable
 sudo apt update
 sudo apt install peek
 </code></pre>
 </div>
+
 <p>If you want to use the latest development version there is also a
 <a href="https://code.launchpad.net/~peek-developers/+archive/ubuntu/daily">PPA with daily builds</a>
 available. Use the repository <code class="highlighter-rouge">ppa:peek-developers/daily</code> in the above commands.</p>
